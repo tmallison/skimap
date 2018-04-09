@@ -10,7 +10,10 @@ class SkiMap(object):
 
     def add_node(self, node_name, node_id=None):
         if not node_id:
-            node_id = max(list(self.graph.keys())) + 1
+            try:
+                node_id = max(list(self.graph.keys())) + 1
+            except ValueError:
+                node_id = 1
 
         self.graph[node_id] = {"name": node_name}
 
